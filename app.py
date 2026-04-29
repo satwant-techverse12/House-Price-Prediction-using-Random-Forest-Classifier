@@ -93,5 +93,9 @@ def predict_api():
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
     
+
+
+
 if not os.path.exists("model/house_price_model.pkl"):
-    import train_model    
+    print("Training model...")
+    import train_model

@@ -2,107 +2,164 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>House Price Prediction</title>
+    <title>House Price Predictor</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
         body {
-            font-family: Arial;
-            background: #f4f6f9;
-            text-align: center;
+            margin: 0;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        form {
-            background: white;
-            padding: 20px;
-            width: 400px;
-            margin: auto;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+        .container {
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 12px;
+            width: 420px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
-        input, select {
-            width: 90%;
-            padding: 8px;
-            margin: 5px 0;
-        }
-        button {
-            padding: 10px;
-            width: 95%;
-            background: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+
         h2 {
-            margin-bottom: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0 12px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #2a5298;
+            box-shadow: 0 0 5px rgba(42,82,152,0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2a5298;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #1e3c72;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #2a5298;
+            font-weight: 600;
         }
     </style>
 </head>
+
 <body>
 
-<h2>🏠 House Price Prediction</h2>
+<div class="container">
 
-<form method="POST">
+    <h2>🏠 House Price Prediction</h2>
 
-    <input type="number" name="area" placeholder="Area (sq ft)" required>
+    <form method="POST">
 
-    <input type="number" name="bedrooms" placeholder="Bedrooms" required>
+        <label>Area (sq ft)</label>
+        <input type="number" name="area" required>
 
-    <input type="number" name="bathrooms" placeholder="Bathrooms" required>
+        <label>Bedrooms</label>
+        <input type="number" name="bedrooms" required>
 
-    <input type="number" name="stories" placeholder="Stories" required>
+        <label>Bathrooms</label>
+        <input type="number" name="bathrooms" required>
 
-    <!-- YES / NO FEATURES -->
-    <label>Main Road:</label>
-    <select name="mainroad">
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-    </select>
+        <label>Stories</label>
+        <input type="number" name="stories" required>
 
-    <label>Guest Room:</label>
-    <select name="guestroom">
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-    </select>
+        <label>Main Road</label>
+        <select name="mainroad">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
 
-    <label>Basement:</label>
-    <select name="basement">
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-    </select>
+        <label>Guest Room</label>
+        <select name="guestroom">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
 
-    <label>Hot Water Heating:</label>
-    <select name="hotwaterheating">
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-    </select>
+        <label>Basement</label>
+        <select name="basement">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
 
-    <label>Air Conditioning:</label>
-    <select name="airconditioning">
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-    </select>
+        <label>Hot Water Heating</label>
+        <select name="hotwaterheating">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
 
-    <input type="number" name="parking" placeholder="Parking Spaces" required>
+        <label>Air Conditioning</label>
+        <select name="airconditioning">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
 
-    <label>Preferred Area:</label>
-    <select name="prefarea">
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-    </select>
+        <label>Parking</label>
+        <input type="number" name="parking" required>
 
-    <!-- FURNISHING -->
-    <label>Furnishing Status:</label>
-    <select name="furnishingstatus">
-        <option value="furnished">Furnished</option>
-        <option value="semi-furnished">Semi-Furnished</option>
-        <option value="unfurnished">Unfurnished</option>
-    </select>
+        <label>Preferred Area</label>
+        <select name="prefarea">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
 
-    <button type="submit">Predict Price</button>
+        <label>Furnishing Status</label>
+        <select name="furnishingstatus">
+            <option value="furnished">Furnished</option>
+            <option value="semi-furnished">Semi-Furnished</option>
+            <option value="unfurnished">Unfurnished</option>
+        </select>
 
-</form>
+        <button type="submit">Predict Price</button>
 
-{% if prediction %}
-    <h3>💰 Predicted Price: ₹ {{ prediction }}</h3>
-{% endif %}
+    </form>
+
+    {% if prediction %}
+        <div class="result">
+            💰 Estimated Price: ₹ {{ "{:,.0f}".format(prediction) }}
+        </div>
+    {% endif %}
+
+</div>
 
 </body>
 </html>
