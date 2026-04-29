@@ -1,5 +1,5 @@
 venv/
 __pycache__/
 *.pyc
-model/*.pkl
-model/*.save
+# model/*.pkl
+# model/*.save

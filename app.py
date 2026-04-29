@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import numpy as np
 import joblib
+import os
 
 app = Flask(__name__)
 
@@ -91,3 +92,6 @@ def predict_api():
 # ✅ Production-ready run
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+    
+if not os.path.exists("model/house_price_model.pkl"):
+    import train_model    
